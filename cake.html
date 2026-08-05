@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎂 Birthday Wish · Cute Cake with Photos</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* ===== BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce7f3 0%, #fbcfe8 40%, #f9a8d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quicksand', 'Segoe UI', system-ui, sans-serif;
+            padding: 1.2rem;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* floating background hearts */
+        body::before,
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.12;
+            animation: floatBg 14s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::before {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        body::after {
+            bottom: 15%;
+            right: 5%;
+            animation-delay: 4s;
+            content: '💖';
+        }
+
+        @keyframes floatBg {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: translateY(-60px) rotate(180deg) scale(1.3);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg) scale(1);
+                opacity: 0.1;
+            }
+        }
+
+        /* ===== MAIN WRAPPER ===== */
+        .main-wrapper {
+            max-width: 960px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* ===== POSTCARD ===== */
+        .postcard {
+            flex: 1 1 380px;
+            max-width: 520px;
+            width: 100%;
+            background: rgba(255, 245, 248, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 60px 60px 50px 50px;
+            box-shadow: 0 30px 60px rgba(219, 39, 119, 0.25), 0 10px 25px rgba(0, 0, 0, 0.08),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.6);
+            padding: 2rem 1.8rem 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-8px) rotate(0.8deg);
+            }
+            66% {
+                transform: translateY(4px) rotate(-0.5deg);
+            }
+        }
+
+        /* ===== PHOTO SIDEBAR ===== */
+        .photo-sidebar {
+            flex: 0 0 140px;
+            max-width: 160px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            animation: floatSidebar 7s ease-in-out infinite;
+        }
+
+        @keyframes floatSidebar {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* for right sidebar (mirror animation) */
+        .photo-sidebar-right {
+            animation: floatSidebarRight 7s ease-in-out infinite;
+        }
+
+        @keyframes floatSidebarRight {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(12px);
+            }
+        }
+
+        .photo-frame {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 6px;
+            box-shadow: 0 8px 24px rgba(219, 39, 119, 0.15),
+                0 0 0 2px rgba(255, 255, 255, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 12px 32px rgba(219, 39, 119, 0.25);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.08);
+        }
+
+        /* photo frame with polaroid style */
+        .photo-frame .polaroid-label {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #9d174d;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== CUTE TITLE ===== */
+        .cute-title {
+            font-family: 'Pacifico', cursive;
+            text-shadow: 0 0 20px rgba(236, 72, 153, 0.3), 0 0 60px rgba(236, 72, 153, 0.1);
+            animation: glowPulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                text-shadow: 0 0 15px rgba(236, 72, 153, 0.2), 0 0 40px rgba(236, 72, 153, 0.05);
+            }
+            100% {
+                text-shadow: 0 0 30px rgba(236, 72, 153, 0.5), 0 0 80px rgba(236, 72, 153, 0.2), 0 0 120px rgba(236, 72, 153, 0.1);
+            }
+        }
+
+        .sticker-badge {
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            padding: 0.4rem 1.6rem;
+            border-radius: 60px;
+            display: inline-block;
+            box-shadow: 0 4px 0 #db2777, 0 8px 20px rgba(219, 39, 119, 0.2);
+            border: 2px solid white;
+            color: #9d174d;
+            transform: rotate(-1.5deg);
+            animation: stickerWiggle 3s infinite alternate ease-in-out;
+            font-size: 1.1rem;
+        }
+
+        @keyframes stickerWiggle {
+            0% {
+                transform: rotate(-2deg) scale(1);
+            }
+            100% {
+                transform: rotate(2deg) scale(1.05);
+            }
+        }
+
+        .girl-sticker {
+            display: inline-block;
+            animation: bounceGirl 3.5s infinite ease-in-out;
+            filter: drop-shadow(0 8px 20px rgba(236, 72, 153, 0.25));
+        }
+
+        @keyframes bounceGirl {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-12px) rotate(2deg);
+            }
+        }
+
+        /* ===== CAKE ===== */
+        .cake-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0.5rem auto 0.2rem;
+            animation: cakeSway 4s ease-in-out infinite;
+        }
+
+        @keyframes cakeSway {
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(0.5deg);
+            }
+        }
+
+        .candle-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100px;
+            width: 70px;
+            margin: 0 auto 2px;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.2s;
+        }
+
+        .candle-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .candle-stick {
+            width: 24px;
+            height: 80px;
+            background: linear-gradient(180deg, #fde68a, #f59e0b 60%, #d97706);
+            border-radius: 30px 30px 12px 12px;
+            box-shadow: inset -4px -6px 10px rgba(0, 0, 0, 0.25),
+                inset 4px 4px 25px #fef3c7,
+                0 8px 0 #b45309,
+                0 12px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #d97706;
+            position: relative;
+        }
+
+        .candle-stick::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 5px;
+            width: 6px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            filter: blur(3px);
+        }
+
+        .wick {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 10px;
+            background: #444;
+            border-radius: 2px 2px 0 0;
+            z-index: 1;
+        }
+
+        .flame {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 58px;
+            background: radial-gradient(ellipse at 30% 20%, #fef9c3, #f97316 45%, #ea580c 75%, #b45309 95%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 0 40px #f59e0b, 0 0 80px #ea580c, 0 0 120px #dc2626, 0 0 180px rgba(220, 38, 38, 0.3);
+            animation: flickerFlame 0.15s infinite alternate ease-in-out;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .flame.hidden-flame {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.1) translateY(40px);
+            box-shadow: 0 0 0 transparent;
+            transition: all 0.6s ease;
+        }
+
+        @keyframes flickerFlame {
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-4deg) skewX(-2deg);
+            }
+            25% {
+                transform: translateX(-48%) scale(1.08, 0.9) rotate(3deg) skewX(1deg);
+            }
+            50% {
+                transform: translateX(-52%) scale(0.95, 1.05) rotate(-2deg) skewX(-1deg);
+            }
+            75% {
+                transform: translateX(-49%) scale(1.03, 0.92) rotate(4deg) skewX(2deg);
+            }
+            100% {
+                transform: translateX(-51%) scale(0.92, 1.04) rotate(-3deg) skewX(-1.5deg);
+            }
+        }
+
+        .flame::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 22px;
+            background: radial-gradient(ellipse, #fffbe6, #fef08a 60%, transparent);
+            border-radius: 50%;
+            filter: blur(4px);
+            opacity: 0.7;
+            animation: innerGlow 0.3s infinite alternate;
+        }
+
+        @keyframes innerGlow {
+            0% {
+                opacity: 0.6;
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        .cake-layer {
+            border-radius: 40px 40px 16px 16px;
+            box-shadow: 0 8px 0 #b45309, 0 12px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .layer-top {
+            background: linear-gradient(180deg, #fbcfe8 0%, #f9a8d4 80%, #f472b6 100%);
+            height: 58px;
+            width: 210px;
+            border-bottom: 3px solid #ec4899;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Pacifico', cursive;
+            color: #9d174d;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: visible;
+        }
+
+        .layer-top::before {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 20px;
+            width: 14px;
+            height: 16px;
+            background: #f9a8d4;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 4px 0 #ec4899;
+        }
+
+        .layer-top::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: 30px;
+            width: 10px;
+            height: 14px;
+            background: #fbcfe8;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 4px 0 #ec4899;
+        }
+
+        .sprinkles {
+            position: absolute;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .layer-mid {
+            background: linear-gradient(180deg, #f9a8d4 0%, #f472b6 80%, #ec4899 100%);
+            height: 46px;
+            width: 232px;
+            border-bottom: 3px solid #db2777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            letter-spacing: 10px;
+            color: #831843;
+        }
+
+        .layer-bot {
+            background: linear-gradient(180deg, #f472b6 0%, #ec4899 60%, #be185d 100%);
+            height: 46px;
+            width: 254px;
+            border-bottom: 6px solid #9d174d;
+            border-radius: 40px 40px 28px 28px;
+            position: relative;
+        }
+
+        .cake-plate {
+            width: 280px;
+            height: 14px;
+            background: radial-gradient(ellipse at center, #f3e8e8, #d4c4c4);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: -4px;
+        }
+
+        /* ===== WISH BOX ===== */
+        .wish-box {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 12px 35px rgba(219, 39, 119, 0.12), inset 0 0 40px rgba(255, 255, 255, 0.4);
+            border-radius: 40px;
+            transition: 0.3s;
+        }
+
+        .count-number {
+            font-size: 5rem;
+            font-weight: 800;
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(135deg, #ec4899, #f472b6, #db2777);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 40px rgba(236, 72, 153, 0.2);
+            line-height: 1.2;
+        }
+
+        .blow-btn {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            box-shadow: 0 6px 0 #9f1239, 0 10px 30px rgba(244, 63, 94, 0.35);
+            transition: all 0.08s linear;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border: none;
+            color: white;
+            padding: 0.85rem 2.4rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transform: translateY(0);
+            width: 100%;
+            max-width: 240px;
+        }
+
+        .blow-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #9f1239;
+        }
+
+        .blow-btn:disabled {
+            opacity: 0.5;
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #9f1239;
+            pointer-events: none;
+        }
+
+        /* ===== SURPRISE BOX ===== */
+        .surprise-box {
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: scale(0.85) translateY(20px);
+            pointer-events: none;
+        }
+
+        .surprise-box.show {
+            max-height: 500px;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            margin-top: 1rem;
+        }
+
+        .surprise-inner {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border-radius: 40px;
+            padding: 1.5rem 1.8rem;
+            border: 2px dashed #ec4899;
+            box-shadow: 0 8px 0 #db2777, inset 0 0 40px rgba(255, 255, 255, 0.5);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .surprise-inner .cute-font {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti-piece {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 1.8rem;
+            animation: confettiFall 3s ease-in forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            box-shadow: 0 5px 0 #5b21b6, 0 8px 25px rgba(139, 92, 246, 0.3);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            border: none;
+            color: white;
+            padding: 0.6rem 2rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .next-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #5b21b6;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            .photo-sidebar {
+                flex: 1 1 auto;
+                max-width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                animation: none;
+            }
+            .photo-sidebar-right {
+                animation: none;
+            }
+            .photo-frame {
+                flex: 0 0 80px;
+                max-width: 90px;
+            }
+            .photo-frame .polaroid-label {
+                display: none;
+            }
+            .postcard {
+                max-width: 100%;
+            }
+            .layer-top {
+                width: 160px;
+                height: 48px;
+                font-size: 1rem;
+            }
+            .layer-mid {
+                width: 180px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+            .layer-bot {
+                width: 200px;
+                height: 38px;
+            }
+            .cake-plate {
+                width: 220px;
+            }
+            .count-number {
+                font-size: 3.8rem;
+            }
+            .girl-sticker svg {
+                width: 65px;
+                height: 65px;
+            }
+            .sticker-badge {
+                font-size: 0.9rem;
+                padding: 0.3rem 1rem;
+            }
+            .layer-top::before,
+            .layer-top::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .postcard {
+                padding: 1.2rem 0.8rem;
+            }
+            .photo-frame {
+                flex: 0 0 65px;
+                max-width: 75px;
+            }
+            .photo-sidebar {
+                gap: 0.5rem;
+            }
+            .blow-btn {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .count-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+
+        <!-- ===== LEFT PHOTO SIDEBAR ===== -->
+        <div class="photo-sidebar" id="leftSidebar">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1015/200/200" alt="Photo 1">
+                <span class="polaroid-label">💕 ချစ်သူ</span>
+            </div>
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1011/200/200" alt="Photo 2">
+                <span class="polaroid-label">🌸 သဲသဲ</span>
+            </div>
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1012/200/200" alt="Photo 3">
+                <span class="polaroid-label">💖 My Love</span>
+            </div>
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1025/200/200" alt="Photo 4">
+                <span class="polaroid-label">✨ Princess</span>
+            </div>
+        </div>
+
+        <!-- ===== POSTCARD ===== -->
+        <div class="postcard">
+
+            <!-- HEADER -->
+            <div class="flex flex-col items-center text-center">
+
+                <div class="flex items-center justify-center gap-2 flex-wrap">
+                    <span class="girl-sticker">
+                        <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="45" r="36" fill="#FDE68A" stroke="#F59E0B" stroke-width="2"/>
+                            <path d="M20 40 C15 20 30 10 50 10 C70 10 85 20 80 40 C78 28 65 18 50 18 C35 18 22 28 20 40Z" fill="#92400E"/>
+                            <path d="M16 44 C12 34 22 22 32 18 C26 24 18 32 16 44Z" fill="#78350F"/>
+                            <path d="M84 44 C88 34 78 22 68 18 C74 24 82 32 84 44Z" fill="#78350F"/>
+                            <circle cx="38" cy="42" r="6" fill="white"/>
+                            <circle cx="62" cy="42" r="6" fill="white"/>
+                            <circle cx="40" cy="43" r="3.5" fill="#1E293B"/>
+                            <circle cx="64" cy="43" r="3.5" fill="#1E293B"/>
+                            <circle cx="41.5" cy="41" r="1.5" fill="white"/>
+                            <circle cx="65.5" cy="41" r="1.5" fill="white"/>
+                            <ellipse cx="32" cy="52" rx="8" ry="4" fill="#FCA5A5" opacity="0.5"/>
+                            <ellipse cx="68" cy="52" rx="8" ry="4" fill="#FCA5A5" opacity="0.5"/>
+                            <path d="M40 57 Q50 66 60 57" stroke="#B45309" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <path d="M44 16 Q50 6 56 16 Q50 12 44 16Z" fill="#EC4899"/>
+                            <circle cx="50" cy="14" r="4" fill="#DB2777"/>
+                        </svg>
+                    </span>
+
+                    <h1 class="cute-title text-4xl md:text-5xl text-pink-700 tracking-wide">
+                        🎉 Make A Wish
+                    </h1>
+                </div>
+
+                <div class="sticker-badge text-base md:text-lg mt-1 mb-1">
+                    🎀 ဖယောင်းတိုင် ကို နှိပ် ပြီး ဆုတောင်းပါ 🎀
+                </div>
+            </div>
+
+            <!-- CAKE -->
+            <div class="cake-wrapper">
+
+                <div class="candle-wrapper" id="candle">
+                    <div class="candle-stick">
+                        <div class="wick"></div>
+                        <div class="flame" id="flame"></div>
+                    </div>
+                </div>
+
+                <div class="layer-top cake-layer">
+                    <span class="sprinkles">✦ ✧ ✦ ✧</span>
+                    <span class="relative z-10 text-pink-800 drop-shadow-md font-bold">❤️❤️❤️</span>
+                </div>
+                <div class="layer-mid cake-layer">
+                    <span>❤️❤️❤️❤️❤️</span>
+                </div>
+                <div class="layer-bot cake-layer"></div>
+                <div class="cake-plate"></div>
+
+                <div class="text-pink-300/80 text-[10px] mt-1 tracking-widest animate-pulse">
+                    ✨ ကိတ်ပေါ်က ဖယောင်းတိုင်ကို နှိပ်ပါ ✨
+                </div>
+            </div>
+
+            <!-- COUNTDOWN BOX -->
+            <div id="countdownBox" class="wish-box px-6 py-5 md:px-10 md:py-7 text-center mt-2">
+
+                <div class="flex items-center justify-center gap-2 text-pink-800">
+                    <span class="text-2xl animate-pulse">❤️</span>
+                    <h2 class="text-xl md:text-2xl font-bold font-['Pacifico',cursive]">Close Your Eyes</h2>
+                    <span class="text-2xl animate-pulse">❤️</span>
+                </div>
+                <p class="text-pink-700/80 text-sm font-medium -mt-1">မွေးနေ့ဆုတောင်းလေးတစ်ခု ဆုတောင်းပါ</p>
+
+                <div class="count-number my-1" id="count">30</div>
+
+                <button id="blowBtn" class="blow-btn mt-2 mx-auto block">
+                    ဖယောင်းတိုင်ကို မှုတ်ပါ 💨
+                </button>
+
+                <div class="flex justify-center gap-1 mt-3 text-pink-400 text-xs">
+                    <span class="animate-bounce">💫</span>
+                    <span class="tracking-widest">wish upon a star</span>
+                    <span class="animate-bounce">💫</span>
+                </div>
+            </div>
+
+            <!-- SURPRISE BOX -->
+            <div id="surpriseBox" class="surprise-box">
+                <div class="surprise-inner text-center">
+                    <div class="flex justify-center items-center gap-2 text-2xl">
+                        <span class="animate-bounce">🎂</span>
+                        <span class="font-bold text-pink-700 cute-font text-2xl">
+                            ✨ ဆုတောင်းလေးများ အများကြီးပြည့်ပါစေနော် ✨
+                        </span>
+                        <span class="animate-bounce">🎂</span>
+                    </div>
+                    <p class="text-pink-800 text-lg font-medium mt-1 cute-font text-2xl">
+                        🎀 Happy Birthday! 🎀
+                    </p>
+                    <p class="text-pink-600/90 text-base font-medium mt-1 leading-relaxed">
+                        သဲသဲ လေး ရဲ့ အိပ်မက်တွေ အမြန်ဆုံး ပြည့်ပါစေနော် ❤️
+                        <br>
+                        <span class="text-sm text-pink-400">ဒီနေ့ဟာ မင်းရဲ့ အထူးဆုံးနေ့ပါ</span>
+                    </p>
+                    <div class="flex justify-center gap-3 mt-3 text-3xl">
+                        <span class="animate-spin">🌸</span>
+                        <span class="animate-bounce">🦋</span>
+                        <span class="animate-pulse">🌈</span>
+                        <span class="animate-bounce">🦄</span>
+                        <span class="animate-spin">🌺</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="flex justify-between items-center mt-4 text-pink-400/60 text-xs px-2">
+                <span class="text-pink-300/50 text-[10px]">❤️ 2026</span>
+                <button id="nextBtn" class="next-btn">Next →</button>
+            </div>
+
+        </div>
+
+        <!-- ===== RIGHT PHOTO SIDEBAR ===== -->
+        <div class="photo-sidebar photo-sidebar-right" id="rightSidebar">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1027/200/200" alt="Photo 5">
+                <span class="polaroid-label">💗 ချစ်တယ်</span>
+            </div>
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1018/200/200" alt="Photo 6">
+                <span class="polaroid-label">🌹 My Queen</span>
+            </div>
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1035/200/200" alt="Photo 7">
+                <span class="polaroid-label">💕 Forever</span>
+            </div>
+            <div class="photo-frame">
+                <img src="https://picsum.photos/id/1040/200/200" alt="Photo 8">
+                <span class="polaroid-label">✨ အိပ်မက်</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const flame = document.getElementById('flame');
+            const candle = document.getElementById('candle');
+            const countDisplay = document.getElementById('count');
+            const blowBtn = document.getElementById('blowBtn');
+            const surpriseBox = document.getElementById('surpriseBox');
+
+            let count = 30;
+            let intervalId = null;
+            let isFlameOn = true;
+            let isCountingDown = false;
+            let isBlown = false;
+
+            function setFlame(visible) {
+                if (visible) {
+                    flame.classList.remove('hidden-flame');
+                    isFlameOn = true;
+                } else {
+                    flame.classList.add('hidden-flame');
+                    isFlameOn = false;
+                }
+            }
+
+            document.getElementById("nextBtn").onclick = function() {
+                launchConfetti();
+                setTimeout(() => {
+                    window.location = "menu.html";
+                }, 600);
+            };
+
+            function launchConfetti() {
+                const emojis = ['🎉', '🎊', '💕', '💖', '✨', '🌟', '🎂', '❤️', '🌸', '🦋', '🌈', '🎀'];
+                for (let i = 0; i < 30; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'confetti-piece';
+                    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    el.style.left = Math.random() * 100 + 'vw';
+                    el.style.fontSize = (Math.random() * 2 + 1.2) + 'rem';
+                    el.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    el.style.animationDelay = (Math.random() * 0.5) + 's';
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 4000);
+                }
+            }
+
+            function resetCountdown(value = 30) {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+                count = value;
+                countDisplay.textContent = count;
+                isCountingDown = false;
+                blowBtn.disabled = false;
+                if (!isFlameOn && !isBlown) {
+                    setFlame(true);
+                }
+                isBlown = false;
+                surpriseBox.classList.remove('show');
+            }
+
+            function stopCountdown() {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                    isCountingDown = false;
+                }
+                blowBtn.disabled = false;
+            }
+
+            function tickCountdown() {
+                if (count <= 0) {
+                    stopCountdown();
+                    setFlame(false);
+                    isBlown = true;
+                    blowBtn.disabled = true;
+                    countDisplay.textContent = '0';
+                    surpriseBox.classList.add('show');
+                    launchConfetti();
+                    return;
+                }
+                count -= 1;
+                countDisplay.textContent = count;
+            }
+
+            function startCountdown() {
+                if (isCountingDown || isBlown) return;
+                if (!isFlameOn && !isBlown) {
+                    setFlame(true);
+                }
+                if (count <= 0) {
+                    count = 30;
+                    countDisplay.textContent = count;
+                }
+                if (intervalId) clearInterval(intervalId);
+                isCountingDown = true;
+                blowBtn.disabled = false;
+                intervalId = setInterval(tickCountdown, 1000);
+            }
+
+            function handleBlow() {
+                if (isBlown) return;
+                if (!isFlameOn) return;
+
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                    isCountingDown = false;
+                }
+
+                setFlame(false);
+                isBlown = true;
+                blowBtn.disabled = true;
+                count = 0;
+                countDisplay.textContent = '0';
+                surpriseBox.classList.add('show');
+                launchConfetti();
+            }
+
+            function handleCandleClick() {
+                if (isBlown) {
+                    setFlame(true);
+                    resetCountdown(30);
+                    isBlown = false;
+                    blowBtn.disabled = false;
+                    surpriseBox.classList.remove('show');
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                        isCountingDown = false;
+                    }
+                    count = 30;
+                    countDisplay.textContent = '30';
+                    return;
+                }
+
+                if (!isFlameOn && !isBlown) {
+                    setFlame(true);
+                    resetCountdown(30);
+                    surpriseBox.classList.remove('show');
+                    return;
+                }
+
+                if (isFlameOn) {
+                    if (isCountingDown) {
+                        stopCountdown();
+                        resetCountdown(30);
+                        isBlown = false;
+                        blowBtn.disabled = false;
+                        setFlame(true);
+                        count = 30;
+                        countDisplay.textContent = '30';
+                        surpriseBox.classList.remove('show');
+                        return;
+                    } else {
+                        if (count <= 0) {
+                            count = 30;
+                            countDisplay.textContent = '30';
+                            isBlown = false;
+                            blowBtn.disabled = false;
+                            setFlame(true);
+                            surpriseBox.classList.remove('show');
+                        }
+                        startCountdown();
+                    }
+                }
+            }
+
+            // --- events ---
+            candle.addEventListener('click', handleCandleClick);
+            blowBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                handleBlow();
+            });
+
+            // --- init ---
+            setFlame(true);
+            count = 30;
+            countDisplay.textContent = '30';
+            isBlown = false;
+            blowBtn.disabled = false;
+            surpriseBox.classList.remove('show');
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+                isCountingDown = false;
+            }
+
+            console.log('🎂 Cute Birthday Card with Photo Sidebars ready!');
+        })();
+    </script>
+
+</body>
+</html>

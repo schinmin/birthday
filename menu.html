@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💙 Menu of Our Love · Together Forever</title>
+  <!-- Font Awesome for icons (optional but used for stars, candles, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0b0e1a 0%, #1a1f30 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 16px;
+    }
+
+    .card {
+      max-width: 700px;
+      width: 100%;
+      background: rgba(255, 240, 245, 0.08);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 60px 60px 40px 40px;
+      padding: 32px 28px 42px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 235, 0.15);
+      border: 1px solid rgba(255, 200, 220, 0.2);
+      transition: 0.3s ease;
+    }
+
+    /* header */
+    .menu-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .menu-title h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #f9d0e3, #ffb3d1, #fce6f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(255, 120, 180, 0.3);
+    }
+
+    .menu-title .sub {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      color: #f0c8dc;
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 6px 18px;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255, 180, 210, 0.2);
+    }
+
+    .sub i {
+      color: #ff99c8;
+    }
+
+    /* section cards */
+    .section {
+      background: rgba(20, 25, 45, 0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 40px;
+      padding: 22px 20px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 200, 230, 0.12);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: 0.2s;
+    }
+
+    .section:hover {
+      border-color: rgba(255, 170, 210, 0.3);
+      background: rgba(30, 35, 60, 0.5);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #f7d4e6;
+      margin-bottom: 16px;
+      border-bottom: 1px dashed rgba(255, 180, 210, 0.2);
+      padding-bottom: 8px;
+    }
+
+    .section-header i {
+      color: #ff9ecb;
+      font-size: 1.8rem;
+      width: 2rem;
+    }
+
+    /* ----- Our Memories (photo grid) ----- */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .photo-item {
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(145deg, #282f4a, #1c2238);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 200, 230, 0.1);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+      transition: 0.2s;
+      color: #baa3b5;
+      font-size: 0.75rem;
+      font-weight: 300;
+      padding: 6px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-item i {
+      font-size: 2.4rem;
+      color: #f7b0d0;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 0 6px #ff88bb55);
+    }
+
+    .photo-item span {
+      background: rgba(0,0,0,0.4);
+      padding: 2px 10px;
+      border-radius: 30px;
+      backdrop-filter: blur(2px);
+      font-size: 0.7rem;
+      color: #f0dae3;
+    }
+
+    .photo-item .photo-label {
+      position: absolute;
+      bottom: 6px;
+      right: 8px;
+      background: rgba(0,0,0,0.5);
+      padding: 0 8px;
+      border-radius: 20px;
+      font-size: 0.5rem;
+      color: #ffb7d0;
+      letter-spacing: 0.5px;
+    }
+
+    /* photo placeholders with emoji/icon */
+    .photo-item:nth-child(1) { background: linear-gradient(145deg, #2e2340, #19162b); }
+    .photo-item:nth-child(2) { background: linear-gradient(145deg, #1f2a40, #141d30); }
+    .photo-item:nth-child(3) { background: linear-gradient(145deg, #3d263a, #1f1426); }
+    .photo-item:nth-child(4) { background: linear-gradient(145deg, #1f2f3f, #121f2f); }
+    .photo-item:nth-child(5) { background: linear-gradient(145deg, #34263f, #1e142b); }
+    .photo-item:nth-child(6) { background: linear-gradient(145deg, #25353f, #141e2b); }
+
+    /* Love Calendar */
+    .calendar-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 16px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 50px;
+      padding: 16px 12px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 180, 210, 0.1);
+    }
+
+    .time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 56px;
+    }
+
+    .time-unit .number {
+      font-size: 2.2rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #fbcbdf, #faaacd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px #ff99cc55;
+    }
+
+    .time-unit .label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #b89fae;
+      margin-top: 4px;
+    }
+
+    .calendar-separator {
+      color: #775a6b;
+      font-size: 1.8rem;
+      font-weight: 100;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Make a Wish */
+    .wish-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .wish-area .candle-icon {
+      font-size: 2.2rem;
+      color: #f7c26b;
+      filter: drop-shadow(0 0 8px #f7b84d77);
+      display: flex;
+      gap: 6px;
+    }
+
+    .wish-area .wish-text {
+      background: rgba(255, 215, 200, 0.06);
+      padding: 8px 20px;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 210, 190, 0.15);
+      color: #eed3df;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+
+    .wish-area .wish-text i {
+      margin-right: 8px;
+      color: #ffbb77;
+    }
+
+    /* Love Letter */
+    .letter-preview {
+      background: rgba(0,0,0,0.2);
+      border-radius: 30px;
+      padding: 16px 20px;
+      border-left: 3px solid #f7a6c9;
+      color: #e2c8d6;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .letter-preview i {
+      color: #ff90bb;
+      margin-right: 6px;
+    }
+
+    .letter-preview .heart-sign {
+      color: #ff80aa;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      color: #78677a;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255, 200, 230, 0.08);
+      padding-top: 18px;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+    }
+
+    .footer-meta .gift-tag {
+      background: rgba(255, 200, 220, 0.05);
+      padding: 4px 14px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 180, 210, 0.1);
+      font-size: 0.7rem;
+      color: #c6aebd;
+    }
+
+    .footer-meta .gift-tag i {
+      color: #f7b0d0;
+    }
+
+    .comment-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #9f8593;
+      font-size: 0.8rem;
+    }
+
+    .comment-section i {
+      color: #c697b0;
+    }
+
+    /* responsiveness */
+    @media (max-width: 500px) {
+      .card { padding: 24px 16px; }
+      .menu-title h1 { font-size: 2.2rem; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .time-unit .number { font-size: 1.8rem; }
+      .calendar-separator { font-size: 1.2rem; }
+      .wish-area { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Menu Header -->
+  <div class="menu-title">
+    <h1>💙 Menu of Our Love</h1>
+    <div class="sub"><i class="fas fa-infinity"></i> Together Forever <i class="fas fa-infinity"></i></div>
+  </div>
+
+  <!-- Our Memories -->
+  <div class="section">
+    <div class="section-header">
+      <i class="fas fa-images"></i> Our Memories
+      <span style="margin-left: auto; font-size: 0.8rem; color: #cfa8bc;"><i class="fas fa-heart" style="color: #ff8eb5;"></i> love every moment</span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-item">
+         <image src="images/sunset.jpeg" alt="Memory 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+        
+        </div>
+      <div class="photo-item"><image src="images/sunset.jpeg" alt="Memory 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"></image><div class="photo-label">✨ 2025</div></div>
+      <div class="photo-item"><image src="images/dinner.jpeg" alt="Memory 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"></image><div class="photo-label">💫 2025</div></div>
+      <div class="photo-item"><image src="images/2.jpeg" alt="Memory 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"></image><div class="photo-label">🌟 2026</div></div>
+      <div class="photo-item"><image src="images/3.jpeg" alt="Memory 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"></image><div class="photo-label">💖 2026</div></div>
+      <div class="photo-item"><image src="images/4.jpeg" alt="Memory 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"></image><div class="photo-label">🌙 2026</div></div>
+    </div>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px; color: #a58596; font-size: 0.7rem; gap: 12px;">
+      <span><i class="fas fa-moon"></i> 07-23</span>
+      <span><i class="fas fa-moon"></i> <i class="fas fa-moon"></i> <i class="fas fa-moon"></i> <i class="fas fa-moon"></i></span>
+      <span><i class="fas fa-ellipsis-h"></i> more</span>
+    </div>
+  </div>
+
+  <!-- Love Calendar (live count) -->
+  <div class="section">
+    <div class="section-header">
+      <i class="fas fa-calendar-alt"></i> Love Calendar
+      <span style="margin-left: auto; font-size: 0.7rem; color: #dbb2c5;">counting our story</span>
+    </div>
+    <div class="calendar-display" id="loveCalendar">
+      <!-- dynamic content via JS -->
+      <div class="time-unit"><span class="number" id="years">00</span><span class="label">Years</span></div>
+      <div class="calendar-separator">:</div>
+      <div class="time-unit"><span class="number" id="months">00</span><span class="label">Months</span></div>
+      <div class="calendar-separator">:</div>
+      <div class="time-unit"><span class="number" id="days">00</span><span class="label">Days</span></div>
+      <div class="calendar-separator">:</div>
+      <div class="time-unit"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
+      <div class="calendar-separator">:</div>
+      <div class="time-unit"><span class="number" id="minutes">00</span><span class="label">Mins</span></div>
+      <div class="calendar-separator">:</div>
+      <div class="time-unit"><span class="number" id="seconds">00</span><span class="label">Secs</span></div>
+    </div>
+    <div style="text-align: right; margin-top: 12px; color: #b28b9c; font-size: 0.7rem; letter-spacing: 0.5px;">
+      <i class="fas fa-clock"></i> from first date · 2023-07-23 21:30
+    </div>
+  </div>
+
+  <!-- Make a Wish -->
+  <div class="section">
+    <div class="section-header">
+      <i class="fas fa-star"></i> Make a Wish
+    </div>
+    <div class="wish-area">
+      <div class="candle-icon">
+        <i class="fas fa-candle-holder"></i>
+        <i class="fas fa-candle-holder"></i>
+        <i class="fas fa-candle-holder"></i>
+        <i class="fas fa-candle-holder"></i>
+        <i class="fas fa-candle-holder"></i>
+      </div>
+      <div class="wish-text">
+        <i class="fas fa-fire"></i> Blow out the candles & make a wish ✨
+      </div>
+    </div>
+  </div>
+
+  <!-- Love Letter -->
+  <div class="section">
+    <div class="section-header">
+      <i class="fas fa-envelope-open-heart"></i> Love Letter
+    </div>
+    <div class="letter-preview">
+      <i class="fas fa-quote-left"></i> ကိုကို့ ရဲ့ သဲသဲ လေးရေ , နေ့ရက်တိုင်း အနားမှာ ရှိပေးပြီး ပျော်ရွှင်စရာလေးတွေ ဖန်တီးပေးတဲ့ အတွက်ကျေးဇူးတင်ပါတယ်နော်. 
+       ကိုကို့ အနားမှာ အမြဲ ရှိနေပေးပါနော် . နေ့ရက်တိုင်း ပျော်ရွှင် ပါစေနော်. အများကြီး ချစ်တယ်နော်။ အာဘွားး ❤️❤️❤️❤️❤️
+      <span class="heart-sign">❤️</span> 
+      <span style="display: block; margin-top: 8px; text-align: right; font-size: 0.8rem; opacity: 0.7;">
+        <i class="fas fa-feather-alt"></i> your love, forever.
+      </span>
+    </div>
+  </div>
+
+  <!-- footer: gifts, translation, comment -->
+  <div class="footer-meta">
+    <div class="gift-tag"><i class="fas fa-gift"></i> So Chic Gifts · 07-23</div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <span><i class="fas fa-moon"></i> <i class="fas fa-moon"></i> <i class="fas fa-moon"></i> <i class="fas fa-moon"></i> <i class="fas fa-moon"></i></span>
+      <span><i class="fas fa-ellipsis-h"></i></span>
+      <span style="background: rgba(255,255,255,0.02); padding: 2px 10px; border-radius: 40px;">See translation</span>
+    </div>
+    <div class="comment-section">
+      <i class="fas fa-search"></i> Search · birthday surprise website link
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 16px; margin-top: 16px; color: #7a6272; font-size: 0.8rem; border-top: 1px solid rgba(255, 200, 230, 0.05); padding-top: 16px;">
+    <i class="fas fa-plus-circle" style="color: #c98aa8;"></i> Add comment...
+  </div>
+</div>
+
+<script>
+  (function() {
+    // FIRST DATE: July 23, 2023, 21:30 (same as "07-23" in design)
+    const firstDate = new Date(2023, 6, 23, 21, 30, 0); // month is 0-index: July = 6
+
+    function updateCalendar() {
+      const now = new Date();
+      let diffSeconds = Math.floor((now - firstDate) / 1000);
+      if (diffSeconds < 0) diffSeconds = 0;
+
+      const years = Math.floor(diffSeconds / (365.25 * 24 * 60 * 60));
+      const remainingAfterYears = diffSeconds % (365.25 * 24 * 60 * 60);
+      const months = Math.floor(remainingAfterYears / (30.44 * 24 * 60 * 60));
+      const remainingAfterMonths = remainingAfterYears % (30.44 * 24 * 60 * 60);
+      const days = Math.floor(remainingAfterMonths / (24 * 60 * 60));
+      const remainingAfterDays = remainingAfterMonths % (24 * 60 * 60);
+      const hours = Math.floor(remainingAfterDays / (60 * 60));
+      const remainingAfterHours = remainingAfterDays % (60 * 60);
+      const minutes = Math.floor(remainingAfterHours / 60);
+      const seconds = Math.floor(remainingAfterHours % 60);
+
+      // pad with leading zeros
+      document.getElementById('years').textContent = String(years).padStart(2, '0');
+      document.getElementById('months').textContent = String(months).padStart(2, '0');
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // update immediately and every second
+    updateCalendar();
+    setInterval(updateCalendar, 1000);
+  })();
+</script>
+
+<!-- subtle extra: add translation note (already in footer) -->
+</body>
+</html>
